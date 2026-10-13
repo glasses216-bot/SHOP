@@ -1,0 +1,65 @@
+html
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蝦皮 93 折導購助手</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f5f5f5; color: #333; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 90%; max-width: 400px; text-align: center; }
+        h1 { color: #ee4d2d; font-size: 1.5rem; margin-bottom: 8px; }
+        p { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 1rem; margin-bottom: 16px; }
+        input:focus { border-color: #ee4d2d; outline: none; }
+        button { width: 100%; padding: 12px; background-color: #ee4d2d; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        button:hover { background-color: #d33b1c; }
+        .result-box { display: none; margin-top: 25px; border-top: 2px dashed #eee; padding-top: 20px; }
+        .btn-link { display: block; text-decoration: none; padding: 12px; border-radius: 8px; margin-bottom: 12px; font-weight: bold; font-size: 0.95rem; }
+        .btn-coupon { background-color: #fff5f3; color: #ee4d2d; border: 1px solid #ffcdc2; }
+        .btn-coupon:hover { background-color: #ffebe7; }
+        .btn-product { background-color: #00bfa5; color: white; }
+        .btn-product:hover { background-color: #00a68f; }
+        .step-tips { font-size: 0.8rem; color: #999; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎁 蝦皮 93 折導購助手</h1>
+    <p>貼入想買的蝦皮商品網址，領券兼導購！</p>
+    
+    <input type="text" id="rawUrl" placeholder="請在此貼上蝦皮商品網址...">
+    <button onclick="generateLinks()">產生專屬省錢連結</button>
+
+    <!-- 產生結果區域 -->
+    <div id="resultArea" class="result-box">
+        <a id="couponLink" href="#" target="_blank" class="btn-link btn-coupon">1. 點我領取 93 折券 (激活導購)</a>
+        <a id="productLink" href="#" target="_blank" class="btn-link btn-product">2. 前往購買原商品</a>
+        <div class="step-tips">💡 請依序點擊按鈕，才能成功享有 93 折與幫我導購唷！</div>
+    </div>
+</div>
+
+<script>
+function generateLinks() {
+    const rawUrl = document.getElementById('rawUrl').value.trim();
+    
+    if (!rawUrl.includes('shopee.tw')) {
+        alert('請輸入正確的蝦皮商品連結唷！');
+        return;
+    }
+
+    // 【請替換下方網址】改為你在蝦皮分潤後台產生的「分潤優惠券/分潤首頁網址」
+    const myAffiliateUrl = "https://s.shopee.tw/9V2DNmy0AQ";
+
+    // 設定按鈕網址
+    document.getElementById('couponLink').href = myAffiliateUrl;
+    document.getElementById('productLink').href = rawUrl;
+
+    // 顯示結果區塊
+    document.getElementById('resultArea').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
